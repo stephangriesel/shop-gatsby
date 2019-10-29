@@ -17,8 +17,8 @@ const IndexPage = () => {
           quantity: 1
         }
       ],
-      successUrl: "http://localhost:8000/",
-      cancelUrl: "http://localhost:8000/"
+      successUrl: "http://localhost:8000/success",
+      cancelUrl: "http://localhost:8000/cancel"
     })
   }
   return (
