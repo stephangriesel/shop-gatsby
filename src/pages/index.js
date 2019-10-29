@@ -7,26 +7,31 @@ import SEO from "../components/seo"
 
 const IndexPage = () => {
   const stripe = window.Stripe("pk_test_uxVeps2FOxzKRvcPqBMCOftw00gMGfkch3")
-  stripe.redirectToCheckout({
-    items: [
-      {
-        sku: "sku_FwQkOSJP53FQWz",
-        quantity: 1
-      }
-    ],
-    successUrl: "http://localhost:8000/",
-    cancelUrl: "http://localhost:8000/"
-  })
+
+
+  const placeOrder = sku => {
+    stripe.redirectToCheckout({
+      items: [
+        {
+          sku: sku,
+          quantity: 1
+        }
+      ],
+      successUrl: "http://localhost:8000/",
+      cancelUrl: "http://localhost:8000/"
+    })
+  }
   return (
     <Layout>
       <SEO title="Home" />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
+      <h1>Welcome To Gatsby Shop</h1>
+      <div>
+        <article>
+          <img src="https://picsum.photos/200/300" alt="Shirt" />
+          <h3>Haat Oorheers Shirt</h3>
+          <button onClick={() => placeOrder("sku_FwQkOSJP53FQWz")}>Buy</button>
+        </article>
       </div>
-      <Link to="/page-2/">Go to page 2</Link>
     </Layout>
   )
 }
