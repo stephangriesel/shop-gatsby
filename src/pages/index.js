@@ -1,15 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
-import SEO from "../components/seo"
 
 const IndexPage = () => {
   const stripe = window.Stripe("pk_test_uxVeps2FOxzKRvcPqBMCOftw00gMGfkch3")
 
+  const [sku, setSku] = useState('sku_G6vszZFkytG9wH');
 
-  const placeOrder = sku => {
+  const placeOrder = () => {
     stripe.redirectToCheckout({
       items: [
         {
@@ -23,13 +23,26 @@ const IndexPage = () => {
   }
   return (
     <Layout>
-      <SEO title="Home" />
-      <h1>Welcome To Gatsby Shop</h1>
       <div>
         <article>
           <img src="https://picsum.photos/200/300" alt="Shirt" />
           <h3>Haat Oorheers Shirt</h3>
-          <button onClick={() => placeOrder("sku_FwQkOSJP53FQWz")}>Buy</button>
+          <select value={sku} onChange={(e) => setSku(e.target.value)}>
+            <option value="sku_G6vszZFkytG9wH">S</option>
+            <option value="sku_G6vuNHU9ctlikc">M</option>
+            <option value="sku_FwQkOSJP53FQWz">L</option>
+          </select>
+          <button onClick={placeOrder}>Buy</button>
+        </article>
+        <article>
+          <img src="https://picsum.photos/200/300" alt="Shirt" />
+          <h3>Tanktop</h3>
+          <select value={sku} onChange={(e) => setSku(e.target.value)}>
+            <option value="sku_G6vszZFkytG9wH">S</option>
+            <option value="sku_G6vuNHU9ctlikc">M</option>
+            <option value="sku_FwQkOSJP53FQWz">L</option>
+          </select>
+          <button onClick={placeOrder}>Buy</button>
         </article>
       </div>
     </Layout>
