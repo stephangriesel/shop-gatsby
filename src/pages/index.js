@@ -1,14 +1,12 @@
-import React, { useState } from "react"
-import { Link } from "gatsby"
-
+import React from "react"
 import Layout from "../components/layout"
-import Product from "../components/product"
+import Products from "../components/products"
 
 const IndexPage = () => {
   return (
     <Layout>
       <div>
-        <Product />
+        <Products />
       </div>
     </Layout>
   )
