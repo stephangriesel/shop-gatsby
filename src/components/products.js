@@ -19,19 +19,31 @@ const PRODUCTS_QUERY = graphql`
                 }
               }
             } 
+            allStripeProduct {
+              edges {
+                node {
+                  name
+                  id
+                }
+              }
+            }
     }
 `;
 
 const Products = () => {
-    return (<StaticQuery query={PRODUCTS_QUERY}
-        render={
-            () => {
-                return (
-                    <Product />
-                )
-            }
-        }
-    />)
+  return (<StaticQuery query={PRODUCTS_QUERY}
+    render={
+      ({ allStripeSku, allStripeProduct }) => {
+        return allStripeProduct.edges.map(product => (
+          <Product
+            key={product.node.id}
+            skus={allStripeSku.edges}
+            product={product.node} />
+        ))
+        return
+      }
+    }
+  />)
 }
 
 export default Products;
