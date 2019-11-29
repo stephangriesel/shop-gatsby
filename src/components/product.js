@@ -19,7 +19,7 @@ const Product = ({ skus, product }) => {
     }
     return (
         <article>
-            <img src="https://picsum.photos/200/300" alt="Shirt" />
+            <img src={image} alt="Shirt" />
             <h3>{product.name}</h3>
             <select value={sku} onChange={(e) => setSku(e.target.value)}>
                 {skus.map(edge => <option key={edge.node.id} value={edge.node.id}>{edge.node.attributes.name}</option>)}
