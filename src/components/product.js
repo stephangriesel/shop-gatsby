@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import '../css/product.css';
 
 const Product = ({ skus, product, image }) => {
-    const stripe = window.Stripe("ADD_KEY")
+    const stripe = window.Stripe(`${process.env.STRIPE_PK}`)
 
     const [sku, setSku] = useState(skus[0].node.id);
 
